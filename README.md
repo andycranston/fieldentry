@@ -18,6 +18,20 @@ value entered is displayed on standard output. So in the above example
 the entered value is saved in the `value` shell variable where it can
 be used in further processing in the shell script.
 
+## Compiling
+
+The `fieldentry.c` C source code file is self-contain so can be compiled
+with:
+
+```
+gcc -o fieldentry fieldentry.c
+```
+
+on Linux systems.
+
+Then copy the compiled `fieldentry` executable to a directory in your `PATH`
+such as `$HOME/bin` or `/usr/local/bin`.
+
 ## Examples
 
 Look at the bash shell scripts `testharness.sh` and `formsentry.sh` in the
