@@ -1,20 +1,9 @@
 !# /bin/bash
 #
-# tharn.sh
+# @(!--#) @(#) testharness.sh, sversion 0.1.0, fversion 001, 12-december-2025
 #
 # test harness script for fieldentry C program
 #
-
-
-tput clear
-
-#       1234512345
-echo
-echo "=============="
-echo "==          =="
-echo "=============="
-
-tput cup 2 2
 
 if [ $# -ge 1 ]
 then
@@ -23,12 +12,17 @@ else
   value=""
 fi
 
-newvalue=`./fieldentry "$value" 10`
+tput clear
 
-echo
-echo
-echo
-echo "New value is \"$newvalue\""
-echo
+echo "============"
+echo "=          ="
+echo "============"
+
+tput cup 1 1
+
+value=`./fieldentry "$value" 10`
+
+tput cup 4 0
+echo "Value is \"$value\""
 
 exit 0
