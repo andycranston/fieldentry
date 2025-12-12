@@ -1,4 +1,4 @@
-static char *g_version = "@(!--#) @(#) fieldentry.c, sversion 0.1.0, fversion 004, 11-december-2025";
+static char *g_version = "@(!--#) @(#) fieldentry.c, sversion 0.1.0, fversion 004, 12-december-2025";
 
 /*
  *  edit a field on screen and return the value on stdout
@@ -35,7 +35,7 @@ static char *g_version = "@(!--#) @(#) fieldentry.c, sversion 0.1.0, fversion 00
 #define FALSE 0
 #endif
 
-#define MAX_ALLOWED_VALUE_LENGTH 10
+#define MAX_ALLOWED_VALUE_LENGTH 132
 
 #define POLL_TIMEOUT 10
 
@@ -49,6 +49,10 @@ char *g_progname;
 
 /**********************************************************************/
 
+/*
+ *  function: usage
+ */
+
 void usage()
 {
 	fprintf(stderr, "%s: usage: %s \"value\" max_value_length\n", g_progname, g_progname);
@@ -57,6 +61,10 @@ void usage()
 }
 
 /**********************************************************************/
+
+/*
+ *  function: basename
+ */
 
 char *basename(char *s)
 {
@@ -80,6 +88,10 @@ char *basename(char *s)
 
 /**********************************************************************/
 
+/*
+ *  function: issafeascii
+ */
+
 int issafeascii(char c)
 {
 	if (((int)c >= 32) && ((int)c <= 126)) {
@@ -90,6 +102,10 @@ int issafeascii(char c)
 }
 
 /**********************************************************************/
+
+/*
+ *  function: allsafeascii
+ */
 
 int allsafeascii(char *s)
 {
@@ -107,7 +123,7 @@ int allsafeascii(char *s)
 /**********************************************************************/
 
 /*
- *  Main
+ *  function: main
  */
 
 int main(int argc, char *argv[])
@@ -227,8 +243,8 @@ int main(int argc, char *argv[])
 		/* extract the character */
 		c = ibuf[0];
 
-		/* if return or newline then exit loop */
-		if ((c == 10) || (c == 13)) {
+		/* if tab, newline or return then exit loop */
+		if ((c == 9) || (c == 10) || (c == 13)) {
 			break;
 		}
 
